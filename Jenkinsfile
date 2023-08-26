@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     // Use the configured Maven installation
-                    def mavenHome = tool name: 'Maven-3.9.4', type: 'Tool'
+                    def mavenHome = tool name: 'Maven3', type: 'Tool'
                     sh "${mavenHome}/bin/mvn test"
                 }
             }
