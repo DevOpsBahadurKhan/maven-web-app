@@ -16,7 +16,8 @@ pipeline {
          stage('Unit testing') {
             steps {
                 script {
-                def mavenHome = tool name: 'maven-3.9.4', type: 'Tool'
+                // def mavenHome = tool name: 'maven-3.9.4', type: 'Tool'
+                def mavenHome = tool name: 'maven-3.9.4', type: 'Maven'
                 def mavenCMD = "${mavenHome}/bin/mvn"
                 sh "${mavenCMD} clean package"
                 }
