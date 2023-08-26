@@ -18,7 +18,8 @@ pipeline {
                 script {
                     // Use the configured Maven installation
                     def mavenHome = tool name: 'Maven3', type: 'Tool'
-                    sh "${mavenHome}/bin/mvn test"
+                    def mavenCMD = "${mavenHome}/bin/mvn"
+                    sh "${mavenCMD} clean package"
                 }
             }
         }
