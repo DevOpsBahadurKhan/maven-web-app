@@ -13,5 +13,13 @@ pipeline {
                 }
             }
         }
+         stage('Unit testing') {
+            steps {
+                script {
+                    // Make sure Maven is properly installed and configured
+                    sh 'mvn test'
+                }
+            }
+        }
     }
 }
