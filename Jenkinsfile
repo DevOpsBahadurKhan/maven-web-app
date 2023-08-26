@@ -16,8 +16,9 @@ pipeline {
          stage('Unit testing') {
             steps {
                 script {
-                    // Make sure Maven is properly installed and configured
-                    sh 'mvn test'
+                    // Use the configured Maven installation
+                    def mavenHome = tool name: 'Maven-3.9.4', type: 'Tool'
+                    sh "${mavenHome}/bin/mvn test"
                 }
             }
         }
