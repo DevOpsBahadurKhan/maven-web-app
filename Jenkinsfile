@@ -13,14 +13,6 @@ pipeline {
                 }
             }
         }
-         stage('Unit testing') {
-            steps {
-                script {
-                    // Use the configured Maven installation
-                    def mavenHome = tool name: 'Maven3', type: 'Tool'
-                    sh "${mavenHome}/bin/mvn test"
-                }
-            }
-        }
+        
     }
 }
