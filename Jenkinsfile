@@ -21,9 +21,10 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    def mavenHome = tool name: 'MAVEN', type: 'Maven'
-                    def mavenCMD = "${mavenHome}/bin/mvn"
-                    sh "${mavenCMD} clean package"
+                    echo "Hellow Build"
+                    // def mavenHome = tool name: 'MAVEN', type: 'Maven'
+                    // def mavenCMD = "${mavenHome}/bin/mvn"
+                    // sh "${mavenCMD} clean package"
                 }
             }
         }
