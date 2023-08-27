@@ -21,37 +21,23 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    echo "Hellow Build"
-                    // def mavenHome = tool name: 'MAVEN', type: 'Maven'
-                    // def mavenCMD = "${mavenHome}/bin/mvn"
-                    // sh "${mavenCMD} clean package"
+                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/SwiftSoft-Bahadur/maven-web-app.git']])
+                    def mavenHome = tool name: 'MAVEN', type: 'Maven'
+                    def mavenCMD = "${mavenHome}/bin/mvn"
+                    sh "${mavenCMD} clean package"
+                }
+            }
+        }
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                    withSonarQubeEnv('Your_SonarQube_Installation_Name') {
+                        def mavenHome = tool name: 'MAVEN', type: 'Maven'
+                        def mavenCMD = "${mavenHome}/bin/mvn"
+                        sh "${mavenCMD} sonar:sonar"
+                    }
                 }
             }
         }
     }
 }
-
-
-// pipeline {
-//     agent any
-
-//     tools {
-//         // Install the Maven version configured as "M3" and add it to the path.
-//         maven "MAVEN"
-//     }
-
-//     stages {
-//         stage('Build') {
-//             steps {
-//                 // Get some code from a GitHub repository
-//                 // git 'https://github.com/SwiftSoft-Bahadur/maven-web-app.git'
-//                 echo "Hellow Build"    
-//                 // Run Maven on a Unix agent.
-//                 sh "mvn clean package"
-
-//                 // To run Maven on a Windows agent, use
-//                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
-//             }
-//         }
-//     }
-// }
