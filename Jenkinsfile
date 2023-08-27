@@ -43,10 +43,10 @@ pipeline {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-                git 'https://github.com/SwiftSoft-Bahadur/maven-web-app.git'
-
+                // git 'https://github.com/SwiftSoft-Bahadur/maven-web-app.git'
+                echo "Hellow Build"    
                 // Run Maven on a Unix agent.
-                sh "mvn clean package"
+                // sh "mvn clean package"
 
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
