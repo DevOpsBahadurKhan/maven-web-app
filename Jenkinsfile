@@ -21,23 +21,23 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/SwiftSoft-Bahadur/maven-web-app.git']])
+                    // checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/SwiftSoft-Bahadur/maven-web-app.git']])
                     def mavenHome = tool name: 'MAVEN', type: 'Maven'
                     def mavenCMD = "${mavenHome}/bin/mvn"
                     sh "${mavenCMD} clean package"
                 }
             }
         }
-        stage('SonarQube Analysis') {
-            steps {
-                script {
-                    withSonarQubeEnv('sonarserver') {
-                        def mavenHome = tool name: 'MAVEN', type: 'Maven'
-                        def mavenCMD = "${mavenHome}/bin/mvn"
-                        sh "${mavenCMD} sonar:sonar"
-                    }
-                }
-            }
-        }
+        // stage('SonarQube Analysis') {
+        //     steps {
+        //         script {
+        //             withSonarQubeEnv('sonarserver') {
+        //                 def mavenHome = tool name: 'MAVEN', type: 'Maven'
+        //                 def mavenCMD = "${mavenHome}/bin/mvn"
+        //                 sh "${mavenCMD} sonar:sonar"
+        //             }
+        //         }
+        //     }
+        // }
     }
 }
