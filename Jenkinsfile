@@ -28,16 +28,5 @@ pipeline {
                 }
             }
         }
-        stage('SonarQube Analysis') {
-            steps {
-                script {
-                    withSonarQubeEnv('sonarserver') {
-                        def mavenHome = tool name: 'MAVEN', type: 'Maven'
-                        def mavenCMD = "${mavenHome}/bin/mvn"
-                        sh "${mavenCMD} sonar:sonar"
-                    }
-                }
-            }
-        }
     }
 }
