@@ -25,7 +25,7 @@ pipeline {
                   //  def mavenHome = tool name: 'MAVEN', type: 'Maven'
                   //  def mavenCMD = "${mavenHome}/bin/mvn"
                   //  sh "${mavenCMD} clean package"
-                      sh "mvn clean package"
+                      echo "Helllow Build"
                 }
             }
         }
