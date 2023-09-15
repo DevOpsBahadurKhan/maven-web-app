@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome Page</title>
+    <title>WDevelop</title>
     <style>
         body {
             font-family: Arial, sans-serif;
