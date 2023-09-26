@@ -1,42 +1,35 @@
+@Library("my-lib") _
 pipeline {
     agent any
-
-    tools {
-        // Install the Maven version configured as "MAVEN" and add it to the path.
-        maven "MAVEN"
+    
+    tools{
+        maven 'Maven-3.9.4'
     }
-
-    stages {
-        stage('Git Checkout') {
-            steps {
-                script {
-                    // Checkout the 'main' branch from the specified GitHub repository
-                    checkout([$class: 'GitSCM', 
-                        branches: [[name: '*/main']],
-                        userRemoteConfigs: [[url: 'https://github.com/SwiftSoft-Bahadur/maven-web-app.git']]
-                    ])
-                }
-            }
-        }
-        stage('Build') {
-            steps {
-                script {
-                    def mavenHome = tool name: 'MAVEN', type: 'Maven'
-                    def mavenCMD = "${mavenHome}/bin/mvn"
-                    sh "${mavenCMD} clean package"
-                }
-            }
-        }
-        stage('SonarQube Analysis') {
-            steps {
-                script {
-                    withSonarQubeEnv('sonarserver') {
-                        def mavenHome = tool name: 'MAVEN', type: 'Maven'
-                        def mavenCMD = "${mavenHome}/bin/mvn"
-                        sh "${mavenCMD} sonar:sonar"
-                    }
-                }
-            }
+    
+    stages{
+        
+    stage('Checkout') {
+       steps{
+        git branch: 'main', url: 'https://github.com/SwiftSoft-Bahadur/maven-web-app.git'
+       }
+    }
+    
+    stage('Maven Build') {
+        steps{
+            mavenBuild()
         }
     }
+    
+     stage('Unit Test'){
+        steps{
+            unitTest()
+        }
+    }
+    
+    stage('staticCodeAnalysis'){
+        steps{
+            staticCodeAnalysis()
+        }
+    }
+  }
 }
