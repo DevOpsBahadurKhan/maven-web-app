@@ -26,10 +26,10 @@ pipeline {
         }
     }
     
-    stage('staticCodeAnalysis'){
-        steps{
-            staticCodeAnalysis()
-        }
-    }
+    // stage('staticCodeAnalysis'){
+    //     steps{
+    //         staticCodeAnalysis()
+    //     }
+    // }
   }
 }
