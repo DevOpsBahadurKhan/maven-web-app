@@ -1,3 +1,21 @@
+<<<<<<< HEAD
+=======
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WDevelop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+>>>>>>> 7b77cdda75eb72c1d4d6503f679a2e8de264cfa6
 
 <!doctype html>
 <html class="no-js" lang="en">
