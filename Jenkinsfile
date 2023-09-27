@@ -15,7 +15,9 @@ pipeline {
         
     stage('Checkout') {
        steps{
-        checkout([$class: 'GitSCM', branches: [[name: '*/develop']], userRemoteConfigs: [[url: env.repo]]])
+        // checkout([$class: 'GitSCM', branches: [[name: '*/develop']], userRemoteConfigs: [[url: env.repo]]])
+       checkout([$class: 'GitSCM', branches: [[name: '*/develop']], userRemoteConfigs: [[url: "${env.repo}"]]])
+
        }
     }
     
