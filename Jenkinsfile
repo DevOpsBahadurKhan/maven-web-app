@@ -1,5 +1,3 @@
-def repo = 'https://github.com/SwiftSoft-Bahadur/maven-web-app.git'
-
 // @Library("my-lib") _
 
 pipeline {
@@ -13,7 +11,7 @@ pipeline {
         
     stage('Checkout') {
        steps{
-        checkout("https://github.com/SwiftSoft-Bahadur/maven-web-app.git")
+        checkout('https://github.com/SwiftSoft-Bahadur/maven-web-app.git')
        }
     }
     
