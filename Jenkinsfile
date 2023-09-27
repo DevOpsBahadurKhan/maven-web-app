@@ -7,11 +7,15 @@ pipeline {
         maven 'Maven-3.9.4'
     }
     
+    environment {
+        repo ='https://github.com/SwiftSoft-Bahadur/maven-web-app.git'
+    }
+
     stages{
         
     stage('Checkout') {
        steps{
-        checkout([$class: 'GitSCM', branches: [[name: '*/develop']], userRemoteConfigs: [[url: 'https://github.com/SwiftSoft-Bahadur/maven-web-app.git', credentialsId: 'shared-lib-credentials']]])
+        checkout(env.repo)
        }
     }
     
