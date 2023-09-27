@@ -16,20 +16,20 @@ pipeline {
     
     stage('Maven Build') {
         steps{
-            // mavenBuild()
+            mavenBuild()
         }
     }
     
      stage('Unit Test'){
         steps{
-            // unitTest()
+            unitTest()
         }
     }
     
-    // stage('staticCodeAnalysis'){
-    //     steps{
-    //         staticCodeAnalysis()
-    //     }
-    // }
+    stage('staticCodeAnalysis'){
+        steps{
+            staticCodeAnalysis()
+        }
+    }
   }
 }
