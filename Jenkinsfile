@@ -17,7 +17,7 @@ pipeline {
         
     stage('Checkout') {
        steps{
-        checkout(env.repo)
+        checkout_private(env.repo)
        }
     }
     
