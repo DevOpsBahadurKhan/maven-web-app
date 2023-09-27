@@ -17,7 +17,7 @@ pipeline {
         
     stage('Checkout') {
        steps{
-        checkout(env.repo)
+        checkout('https://github.com/SwiftSoft-Bahadur/maven-web-app.git')
        }
     }
     
