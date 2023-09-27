@@ -1,4 +1,7 @@
+def repo = 'https://github.com/SwiftSoft-Bahadur/maven-web-app.git'
+
 @Library("my-lib") _
+
 pipeline {
     agent any
     
@@ -10,7 +13,7 @@ pipeline {
         
     stage('Checkout') {
        steps{
-        git branch: 'main', url: 'https://github.com/SwiftSoft-Bahadur/maven-web-app.git'
+        git branch: 'main', url: "${repo}"
        }
     }
     
