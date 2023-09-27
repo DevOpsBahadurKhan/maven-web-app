@@ -10,9 +10,7 @@ pipeline {
         
     stage('Checkout') {
        steps{
-        // git branch: 'main', url: 'https://github.com/SwiftSoft-Bahadur/maven-web-app.git'
-        def repo = 'https://github.com/SwiftSoft-Bahadur/maven-web-app.git'
-        sh "git clone ${repo}"
+        git branch: 'main', url: 'https://github.com/SwiftSoft-Bahadur/maven-web-app.git'
        }
     }
     
