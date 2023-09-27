@@ -1,6 +1,6 @@
 def repo = 'https://github.com/SwiftSoft-Bahadur/maven-web-app.git'
 
-@Library("my-lib") _
+// @Library("my-lib") _
 
 pipeline {
     agent any
