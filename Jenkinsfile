@@ -13,7 +13,7 @@ pipeline {
         
     stage('Checkout') {
        steps{
-        checkout(repo)
+        checkout(`${repo}`)
        }
     }
     
