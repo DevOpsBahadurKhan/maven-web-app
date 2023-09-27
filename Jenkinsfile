@@ -10,11 +10,12 @@ pipeline {
     environment {
         repo ='https://github.com/SwiftSoft-Bahadur/maven-web-app.git'
     }
+
     stages{
         
     stage('Checkout') {
        steps{
-        checkout(repo)
+        checkout([$class: 'GitSCM', branches: [[name: '*/develop']], userRemoteConfigs: [[url: env.repo]]])
        }
     }
     
