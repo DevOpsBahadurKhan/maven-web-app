@@ -1,6 +1,6 @@
-// @Library("my-lib") _
 
 pipeline {
+@Library("my-lib") _
     agent any
     
     tools {
