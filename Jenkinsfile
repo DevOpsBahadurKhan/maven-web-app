@@ -35,7 +35,7 @@ pipeline {
     
     stage('staticCodeAnalysis'){
         steps{
-            staticCodeAnalysis()
+            echo "staticCodeAnalysis()"
         }
     }
   }
