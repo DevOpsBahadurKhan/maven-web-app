@@ -13,7 +13,7 @@ pipeline {
         
     stage('Checkout') {
        steps{
-        checkout(`${repo}`)
+        checkout("https://github.com/SwiftSoft-Bahadur/maven-web-app.git")
        }
     }
     
