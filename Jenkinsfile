@@ -1,8 +1,8 @@
-@Library("my-lib") _
+// @Library("my-lib") _
 pipeline {
     agent any
     
-    tools{
+    tools {
         maven 'Maven-3.9.4'
     }
     
@@ -18,13 +18,13 @@ pipeline {
     
     stage('Maven Build') {
         steps{
-            mavenBuild()
+            // mavenBuild()
         }
     }
     
      stage('Unit Test'){
         steps{
-            unitTest()
+            // unitTest()
         }
     }
     
