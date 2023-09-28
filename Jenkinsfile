@@ -1,54 +1,42 @@
-node{
+@Library("my-lib") _
+
+
+
+pipeline {
+    agent any
     
-    stage('Clone repo'){
-        git credentialsId: 'GIT-Credentials', url: 'https://github.com/ashokitschool/maven-web-app.git'
+    tools {
+        maven 'Maven-3.9.4'
     }
     
-    stage('Maven Build'){
-        def mavenHome = tool name: "Maven-3.8.6", type: "maven"
-        def mavenCMD = "${mavenHome}/bin/mvn"
-        sh "${mavenCMD} clean package"
+    environment {
+        repo ='https://github.com/SwiftSoft-Bahadur/maven-web-app.git'
     }
-    
-    stage('SonarQube analysis') {       
-        withSonarQubeEnv('Sonar-Server-7.8') {
-       	sh "mvn sonar:sonar"    	
-    }
+
+    stages{
         
-    stage('upload war to nexus'){
-	steps{
-		nexusArtifactUploader artifacts: [	
-			[
-				artifactId: '01-maven-web-app',
-				classifier: '',
-				file: 'target/01-maven-web-app.war',
-				type: war		
-			]	
-		],
-		credentialsId: 'nexus3',
-		groupId: 'in.ashokit',
-		nexusUrl: '',
-		protocol: 'http',
-		repository: 'ashokit-release'
-		version: '1.0.0'
-	}
-}
-    
-    stage('Build Image'){
-        sh 'docker build -t ashokit/mavenwebapp .'
+    stage('Checkout') {
+       steps{
+        checkout_private(env.repo)
+       }
     }
     
-    stage('Push Image'){
-        withCredentials([string(credentialsId: 'DOCKER-CREDENTIALS', variable: 'DOCKER_CREDENTIALS')]) {
-            sh 'docker login -u ashokit -p ${DOCKER_CREDENTIALS}'
+    stage('Maven Build') {
+        steps{
+            mavenBuild()
         }
-        sh 'docker push ashokit/mavenwebapp'
     }
     
-    stage('Deploy App'){
-        kubernetesDeploy(
-            configs: 'maven-web-app-deploy.yml',
-            kubeconfigId: 'Kube-Config'
-        )
-    }    
+     stage('Unit Test'){
+        steps{
+            unitTest()
+        }
+    }
+    
+    stage('staticCodeAnalysis'){
+        steps{
+            echo "staticCodeAnalysis()"
+        }
+    }
+  }
 }
